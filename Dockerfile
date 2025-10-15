@@ -40,7 +40,7 @@ RUN /opt/conda/bin/conda run -n robomimic_venv conda install -y pytorch==2.0.0 t
 
 # Install robomimic from source
 WORKDIR /opt
-RUN git clone https://github.com/ARISE-Initiative/robomimic.git && \
+RUN git clone https://github.com/sidsrikanth1/robomimic.git && \
     /opt/conda/bin/conda run -n robomimic_venv pip install -e ./robomimic
 
 # Install robosuite
