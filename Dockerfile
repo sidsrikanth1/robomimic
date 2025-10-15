@@ -29,8 +29,10 @@ RUN curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_6
     rm /tmp/miniconda.sh && \
     conda clean -afy
 
-# Create and activate robomimic conda environment with Python 3.9
-RUN /opt/conda/bin/conda create -n robomimic_venv python=3.9 -y
+RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
+    /opt/conda/bin/conda create -n robomimic_venv python=3.9 -y
+
 
 # Install PyTorch and torchvision with CPU fallback
 RUN /opt/conda/bin/conda run -n robomimic_venv conda install -y pytorch==2.0.0 torchvision==0.15.0 cpuonly -c pytorch || \
